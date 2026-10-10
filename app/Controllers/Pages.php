@@ -11,18 +11,18 @@ class Pages extends BaseController
     {
         $taskModel = new TaskModel();
 
-        $data['tasks'] = $taskModel->getTodayTasks();
-
-        return view('welcome', $data);
+        return view('welcome', [
+            'tasks' => $taskModel->getTodayTasks()
+        ]);
     }
 
     public function profile()
     {
         $userModel = new UserModel();
 
-        $data['user'] = $userModel->getDemoUser();
-
-        return view('profile', $data);
+        return view('profile', [
+            'user' => $userModel->getDemoUser()
+        ]);
     }
 
     public function about()

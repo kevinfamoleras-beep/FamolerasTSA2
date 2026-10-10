@@ -14,15 +14,20 @@ class UserModel extends Model
         'username',
         'full_name',
         'email',
-        'created_at'
+        'created_at',
+        'password'
     ];
 
-    // Retrieve the single demo user
     public function getDemoUser()
     {
         return $this->builder()
             ->orderBy('id', 'ASC')
             ->get(1)
             ->getRowArray();
+    }
+
+    public function findByUsername(string $username)
+    {
+        return $this->where('username', $username)->first();
     }
 }

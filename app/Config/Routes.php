@@ -5,14 +5,24 @@ use CodeIgniter\Router\RouteCollection;
 
 /** @var RouteCollection $routes */
 
-// Welcome page
+// Public pages
 $routes->get('/', 'Pages::index');
+$routes->get('tasks', 'Tasks::index');
+$routes->get('profile', 'Pages::profile');
+$routes->get('about', 'Pages::about');
 
-// Task List page
-$routes->get('/tasks', 'Tasks::index');
+// Authentication
+$routes->get('login', 'Auth::login');
+$routes->post('login', 'Auth::attemptLogin');
+$routes->post('logout', 'Auth::logout');
 
-// Profile page
-$routes->get('/profile', 'Pages::profile');
+// Protected task management
+$routes->group('tasks', ['filter' => 'auth'], static function ($routes) {
+    $routes->get('new', 'Tasks::new');
+    $routes->post('create', 'Tasks::create');
 
-// About page
-$routes->get('/about', 'Pages::about');
+    $routes->get('edit/(:num)', 'Tasks::edit/$1');
+    $routes->post('update/(:num)', 'Tasks::update/$1');
+
+    $routes->post('archive/(:num)', 'Tasks::archive/$1');
+});

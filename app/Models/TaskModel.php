@@ -14,24 +14,26 @@ class TaskModel extends Model
         'title',
         'status',
         'task_date',
-        'created_at'
+        'created_at',
+        'is_archived'
     ];
 
-    // Retrieve only tasks scheduled for today
     public function getTodayTasks()
     {
         return $this->builder()
             ->where('task_date', date('Y-m-d'))
-            ->orderBy('task_date', 'ASC')
+            ->where('is_archived', 0)
+            ->orderBy('id', 'ASC')
             ->get()
             ->getResultArray();
     }
 
-    // Retrieve all tasks ordered by date
     public function getAllTasks()
     {
         return $this->builder()
+            ->where('is_archived', 0)
             ->orderBy('task_date', 'ASC')
+            ->orderBy('id', 'ASC')
             ->get()
             ->getResultArray();
     }

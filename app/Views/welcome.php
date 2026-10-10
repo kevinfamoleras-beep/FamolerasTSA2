@@ -14,24 +14,27 @@
     <a href="<?= site_url('tasks') ?>">Task List</a>
     <a href="<?= site_url('profile') ?>">Profile</a>
     <a href="<?= site_url('about') ?>">About</a>
+
+    <?php if (session()->get('isLoggedIn')): ?>
+        <form action="<?= site_url('logout') ?>" method="post" class="nav-form">
+            <?= csrf_field() ?>
+            <button type="submit">Logout</button>
+        </form>
+    <?php else: ?>
+        <a href="<?= site_url('login') ?>">Login</a>
+    <?php endif; ?>
 </nav>
 
 <div class="container">
 
     <h1>Welcome to Tasks for Today</h1>
 
-    <p>
-        Stay organized and keep track of your daily tasks.
-    </p>
+    <p>Stay organized and manage your daily schedule.</p>
 
     <h2>Today's Tasks</h2>
-
-    <p>
-        Date: <?= date('F d, Y') ?>
-    </p>
+    <p><?= date('F d, Y') ?></p>
 
     <?php if (!empty($tasks)): ?>
-
         <table>
             <thead>
                 <tr>
@@ -45,23 +48,18 @@
                 <?php foreach ($tasks as $task): ?>
                     <tr>
                         <td><?= esc($task['title']) ?></td>
-
                         <td>
                             <span class="status <?= esc($task['status']) ?>">
                                 <?= esc(ucfirst($task['status'])) ?>
                             </span>
                         </td>
-
                         <td><?= esc($task['task_date']) ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
-
     <?php else: ?>
-
-        <p>No tasks scheduled for today.</p>
-
+        <p>No active tasks scheduled for today.</p>
     <?php endif; ?>
 
     <p>
