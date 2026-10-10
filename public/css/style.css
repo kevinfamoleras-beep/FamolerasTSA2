@@ -1,0 +1,135 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6fb;
+    color: #263247;
+}
+
+nav {
+    background: #263b66;
+    padding: 18px 30px;
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #b9d6ff;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+h1 {
+    color: #263b66;
+    margin-top: 0;
+}
+
+h2 {
+    color: #334e80;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 14px;
+    border-bottom: 1px solid #e1e6ef;
+    text-align: left;
+}
+
+th {
+    background: #e9effa;
+    color: #263b66;
+}
+
+tr:hover {
+    background: #f7faff;
+}
+
+.status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    background: #e9edf3;
+}
+
+.status.pending {
+    background: #fff1d6;
+    color: #946200;
+}
+
+.status.completed {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.profile-card {
+    background: #f8faff;
+    padding: 25px;
+    border: 1px solid #e0e7f5;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.button-link {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #263b66;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.button-link:hover {
+    background: #38568e;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #69778e;
+}
+
+@media (max-width: 700px) {
+    nav {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .container {
+        margin: 15px;
+        padding: 18px;
+        overflow-x: auto;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
